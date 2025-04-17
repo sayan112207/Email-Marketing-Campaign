@@ -77,8 +77,8 @@ The model incorporates various features for prediction:
 
 | Country | Open Rate | Click Rate |
 |---------|-----------|------------|
-| 🇬🇧 UK / 🇺🇸 US | ~12% | ~2.45% |
-| 🇪🇸 Spain / 🇫🇷 France | ~4% | ~0.85% |
+| UK / US | ~12% | ~2.45% |
+| Spain / France | ~4% | ~0.85% |
 
 - **Insight**: UK and US audiences are far more responsive.
 - **Interpretation**: Regional segmentation is critical. Consider localized campaigns for underperforming regions.
