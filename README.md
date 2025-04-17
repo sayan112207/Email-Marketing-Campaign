@@ -1,4 +1,4 @@
-# Email-Marketing-Campaign
+## Email-Marketing-Campaign
 
 This repository contains a machine learning model that predicts email click-through rates to optimize marketing campaign effectiveness. The model analyzes email engagement patterns and identifies high-probability user segments, potentially increasing click-through rates by over 45x compared to untargeted campaigns.
 
@@ -26,6 +26,74 @@ The model incorporates various features for prediction:
 - User country
 - Hour of day
 - User purchase history
+
+## Key EDA Findings and Visualizations
+
+### 1. Email Text: Short vs Long
+
+- **Insight**: Short emails have **slightly higher open and click rates**.
+- **Interpretation**: Simpler, concise content likely engages readers more effectively.
+
+![Short vs Long Email Engagement](https://raw.githubusercontent.com/sayan112207/Email-Marketing-Campaign/refs/heads/main/images/email_text.png)
+
+---
+
+### 2. Personalization Matters
+
+- **Insight**: Emails personalized with the **user's name** perform better in terms of both open and click-through rates.
+- **Interpretation**: A simple "Hey John!" can go a long way in building trust and engagement.
+
+![Personalization Effect](https://raw.githubusercontent.com/sayan112207/Email-Marketing-Campaign/refs/heads/main/images/email_version.png)
+
+---
+
+### 3. Best Days to Send Emails
+
+| Metric | Top Days | Weak Days |
+|--------|----------|-----------|
+| **Open Rate** | Tuesday (~12%), Wednesday (~12%) | Friday (~7.4%), Weekend (~8.7%) |
+| **Click Rate** | Wednesday (~2.75%), Tuesday (~2.45%) | Friday (~1.4%), Weekend (~1.7%) |
+
+- **Interpretation**: Mid-week (Tue–Thu) campaigns are more effective. Avoid Fridays and weekends for important emails.
+
+- ![WeekDay effect](https://raw.githubusercontent.com/sayan112207/Email-Marketing-Campaign/refs/heads/main/images/weekday.png)
+
+---
+
+### 4. Optimal Sending Time (Hour of Day)
+
+| Metric | Peak Hours | Low Hours |
+|--------|------------|-----------|
+| **Open Rate** | 24:00 (~16%), 10–12 AM (~12.5%–13.5%) | 20–22 (~6%) |
+| **Click Rate** | 24:00 (~4.1%), 10–12 AM (~2.6–2.8%) | 20–21 (~0.8–1.2%) |
+
+- **Interpretation**: Emails sent around **midnight** and **late morning** perform best. Avoid evening hours (8–10 PM).
+
+- ![Hour Effect](https://raw.githubusercontent.com/sayan112207/Email-Marketing-Campaign/refs/heads/main/images/by_hour.png)
+
+---
+
+### 5. User Country Performance
+
+| Country | Open Rate | Click Rate |
+|---------|-----------|------------|
+| 🇬🇧 UK / 🇺🇸 US | ~12% | ~2.45% |
+| 🇪🇸 Spain / 🇫🇷 France | ~4% | ~0.85% |
+
+- **Insight**: UK and US audiences are far more responsive.
+- **Interpretation**: Regional segmentation is critical. Consider localized campaigns for underperforming regions.
+
+![Open and Click Rate by Country](https://raw.githubusercontent.com/sayan112207/Email-Marketing-Campaign/refs/heads/main/images/by_country.png)
+
+---
+
+**Key Recommendations for Email Campaign Optimization:**
+
+- Keep emails short and to the point.
+- Use personalization (e.g., first names).
+- Send emails between **10 AM and midnight**, preferably **mid-week** (Tue–Thu).
+- Target responsive regions (UK/US) more aggressively; localize for others.
+- Avoid evenings and weekends for crucial sends.
 
 ## Technical Implementation
 
@@ -104,11 +172,3 @@ python model.py
    - Lower engagement: Spain and France
 
 4. **Purchase History Significance**: User purchase history is the strongest predictor of email engagement, suggesting value in segmenting based on customer lifecycle stage.
-
-## Next Steps
-
-1. Implement A/B testing with model-based targeting
-2. Explore additional features (e.g., user demographics, device type)
-3. Test different classification algorithms
-4. Develop a real-time scoring system for campaign optimization
-5. Create a threshold sensitivity analysis to optimize for business KPIs
