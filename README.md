@@ -1,5 +1,4 @@
 # Email-Marketing-Campaign
-ML Case Study for Quantacus.Ai
 
 This repository contains a machine learning model that predicts email click-through rates to optimize marketing campaign effectiveness. The model analyzes email engagement patterns and identifies high-probability user segments, potentially increasing click-through rates by over 45x compared to untargeted campaigns.
 
