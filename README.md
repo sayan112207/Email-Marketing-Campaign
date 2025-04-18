@@ -122,7 +122,22 @@ The model incorporates various features for prediction:
 - **Click Rate**: 2.12%
 
 ### Targeting Improvement
-- **Simulated CTR** with targeting high-probability users: 95.26% (45x improvement)
+- **Baseline CTR (random sending)**: 50.00%
+- **Simulated CTR (model targeting, threshold=0.5):** 95.26%
+- **Number of users targeted by model:** 19977 out of 39153
+
+> **Simulated CTR** with targeting high-probability users: 95.26% (45x improvement)
+
+![CTR Targetting](https://raw.githubusercontent.com/sayan112207/Email-Marketing-Campaign/refs/heads/main/images/ctr_targetting.png)
+
+This plot evaluates the efficacy of using a machine learning model to prioritize email recipients. It compares the cumulative Click-Through Rate (CTR) when targeting users ranked by model predictions versus the baseline CTR when targeting users randomly.
+
+- Model-based targeting outperforms random targeting significantly, especially for the **top 40–50%** of users as ranked by the model.
+- The top 40% of users, when targeted, retain a **CTR close to 99%**, showcasing the model’s strong ability to identify high-interest users.
+- As targeting expands beyond 50%, the CTR declines, but remains above the baseline CTR (~0.5) for most segments.
+- Random targeting (represented by the red dashed line) performs consistently at the baseline level, highlighting the value of intelligent targeting.
+
+This analysis confirms that predictive modeling can dramatically improve email marketing effectiveness. By focusing on users most likely to click, marketers can achieve much higher engagement with fewer sends.
 
 ### Segment Analysis
 | Country | Email Version | Open Rate | Click Rate | Sample Size |
