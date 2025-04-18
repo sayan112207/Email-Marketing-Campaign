@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, roc_auc_score, f1_score, precision_score, recall_score
@@ -68,11 +70,35 @@ recall = recall_score(y_test, y_pred)
 print(f"Recall: {recall:.4f}")
 
 # Q3: Estimate model improvement in CTR
+baseline_ctr = y_test.mean()
+print(f"Baseline CTR (random sending): {baseline_ctr:.2%}")
+
 # Simulate sending only to users with predicted click probability above a threshold
 threshold = 0.5
 selected = y_pred_proba > threshold
-simulated_ctr = y_test[selected].mean()
-print(f"Simulated CTR if sending only to high-probability users: {simulated_ctr:.2%}")
+if selected.sum() == 0:
+    print("No users selected above threshold. Lower the threshold.")
+else:
+    simulated_ctr = y_test[selected].mean()
+    print(f"Simulated CTR (model targeting, threshold={threshold}): {simulated_ctr:.2%}")
+    print(f"Number of users targeted by model: {selected.sum()} out of {len(y_test)}")
+
+# Sort users by predicted probability
+sorted_indices = np.argsort(-y_pred_proba)
+sorted_y = y_test.iloc[sorted_indices].reset_index(drop=True)
+cum_users = np.arange(1, len(sorted_y)+1)
+cum_clicks = sorted_y.cumsum()
+ctr_at_k = cum_clicks / cum_users
+
+plt.figure(figsize=(8,5))
+plt.plot(cum_users / len(sorted_y), ctr_at_k, label='Model CTR')
+plt.axhline(baseline_ctr, color='red', linestyle='--', label='Baseline CTR')
+plt.xlabel('Fraction of users targeted (top X% by model)')
+plt.ylabel('Cumulative CTR')
+plt.title('Simulated CTR Uplift by Model Targeting')
+plt.legend()
+plt.tight_layout()
+plt.show()
 
 # Q4: Patterns in segments (example: by country and personalization)
 segment_summary = email_table.groupby(['user_country', 'email_version']).agg(
